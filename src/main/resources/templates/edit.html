@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit!</title>
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+
+{{#message}}
+{{text}}
+<form action="/edit-message" method="post">
+    <input type="hidden" value="{{id}}" name="id">
+    <input class="input" type="text" name="editText">
+    <button class="btn" type="submit">Edit Message</button>
+</form>
+{{/message}}
+
+</body>
+</html>

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -18,8 +19,9 @@ public class MessageController {
     MessageRepository messages;
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public String home(Model model){
-        List<Message> messageList = (ArrayList) messages.findAll();
+    public String home(Model model) {
+        ArrayList<Message> messageList = (ArrayList) messages.findAll();
+        Collections.sort(messageList);
         model.addAttribute("messages", messageList);
         return "home";
     }
@@ -30,7 +32,27 @@ public class MessageController {
         messages.save(newMessage);
         return "redirect:/";
     }
-//    @RequestMapping(path = "/edit-message", method = RequestMethod.POST)
-//    public String
+
+    @RequestMapping(path = "/edit", method = RequestMethod.GET)
+    public String goToEdit(Model model, Integer id) {
+        List<Message> messageList = (ArrayList) messages.findAll();
+        Message msg = new Message();
+        for (Message m : messageList) {
+            if (m.id == id) {
+                msg = m;
+            }
+        }
+
+        model.addAttribute("message", msg);
+        return "edit";
+    }
+
+    @RequestMapping(path = "/edit-message", method = RequestMethod.POST)
+    public String editMessage(Integer id, String editText) {
+        Message messageToEdit = messages.findOne(id);
+        messageToEdit.text = editText;
+        messages.save(messageToEdit);
+        return "redirect:/";
+    }
 
 }
