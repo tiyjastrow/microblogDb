@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage!</title>
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+
+<form action="/add-message" method="post">
+    <input class="input" type="text" name="text">
+    <button class="btn1" type="submit">Submit Message</button>
+</form>
+
+<ol style="color: azure">
+    {{#messages}}
+    <li style="font-size: large">{{text}}</li>
+    <form action="/edit" method="get" style="display: inline">
+        <input class="input" type="hidden" value="{{id}}" name="id">
+        <button class="btn" type="submit">Edit Message</button>
+    </form>
+    {{/messages}}
+</ol>
+
+</body>
+</html>

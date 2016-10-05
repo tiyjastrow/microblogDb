@@ -1,0 +1,19 @@
+body {
+    background: url('/wallhaven-230934.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.btn1{
+    width:15%;
+    font-size: 1rem;
+}
+
+.btn {
+    width: 10%;
+    font-size: 0.75rem;
+}
+
+.input {
+    width: 40%;
+    font-size: 1rem;
+}
