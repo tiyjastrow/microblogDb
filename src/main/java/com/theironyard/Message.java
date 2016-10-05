@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "messages")
-public class Message {
+public class Message implements Comparable {
     @Id
     @GeneratedValue
     int id;
@@ -23,4 +23,10 @@ public class Message {
     public String toString() {
         return message;
     }
+    @Override
+    public int compareTo(Object O) {
+        Message m = (Message) O;
+        return id - m.id;
+    }
+
 }
