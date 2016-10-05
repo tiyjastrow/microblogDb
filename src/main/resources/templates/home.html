@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage!</title>
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+
+<form action="/add-message" method="post">
+    <input type="text" name="text">
+    <button type="submit">Submit Message</button>
+</form>
+
+<ol style="color: azure">
+    {{#messages}}
+    <li>{{text}}</li>
+    {{/messages}}
+</ol>
+
+</body>
+</html>
