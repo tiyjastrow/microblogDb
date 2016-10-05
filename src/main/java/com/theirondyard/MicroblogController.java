@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
 /**
  * Created by joshuakeough on 10/5/16.
@@ -20,7 +20,8 @@ public class MicroblogController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String home(Model model) {
-        List<Message> messageList = (ArrayList)messages.findAll();
+        ArrayList<Message> messageList = (ArrayList)messages.findAll();
+        Collections.sort(messageList);
         model.addAttribute("messages", messageList);
 
         return "home";

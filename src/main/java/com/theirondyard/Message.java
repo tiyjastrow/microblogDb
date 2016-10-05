@@ -5,7 +5,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "messages")
-public class Message {
+public class Message implements Comparable{
     @Id
     @GeneratedValue
     private int id;
@@ -39,5 +39,11 @@ public class Message {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Message m = (Message) o;
+        return id - m.getId();
     }
 }
