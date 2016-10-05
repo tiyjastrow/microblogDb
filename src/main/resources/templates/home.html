@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/add-message" method="post">
+    <input type="text" placeholder="enter your message" name="text">
+    <button type="submit">Submit</button>
+</form>
+
+<ol>
+{{#messages}}
+<li>{{.}}</li>
+    <form action="/edit-message" method="post">
+        <input type="text" placeholder="Enter the edited text" name="text">
+        <input type="hidden" value ={{id}} name="id">
+        <button type="submit">Edit Message</button>
+    </form>
+{{/messages}}
+</ol>
+
+</body>
+</html>
