@@ -23,8 +23,7 @@ public class MicroblogDbController {
 
     @RequestMapping(path = "/add-message", method = RequestMethod.POST)
     public String addMessage(String messageBody){
-        Message msg = new Message(messageBody);
-        messages.save(msg);
+        messages.save(new Message(messageBody));
         return "redirect:/";
     }
 
