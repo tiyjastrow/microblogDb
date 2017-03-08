@@ -7,15 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class MicroblogSpringController {
     @Autowired
     MessageRepository messages;
-    //static ArrayList<Message> messages = new ArrayList<>();
-    //static int counter = 0;
 
     @RequestMapping(path="/", method= RequestMethod.GET)
     public String home(Model model, HttpSession session){
@@ -28,8 +25,8 @@ public class MicroblogSpringController {
 
     @RequestMapping(path="/edit", method=RequestMethod.GET)
     public String home(Model model, Integer id, String message){
-        model.addAttribute("message", message);
-        model.addAttribute("id", id);
+//        model.addAttribute("message", message);
+          model.addAttribute("id", id);
         return("edit");
 
     }
