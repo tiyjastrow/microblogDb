@@ -1,5 +1,6 @@
-# microblogDb
+# MicroblogSpring
 
 ## Description
-
-Use Spring Data to store the microblog messages in PostgreSQL. Add editing functionality as well.
+Project Name: `MicroblogSpring`  
+Make a web application that allows you write and delete short messages. When you click "Submit", it will refresh and 
+show a list of messages you wrote.
