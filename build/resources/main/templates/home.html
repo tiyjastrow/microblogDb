@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+{{^name}}
+<form action="/login" method="post">
+    <input type="text" placeholder="Name" name="userName" width="200px">
+    <button type="submit">Login</button>
+</form>
+{{/name}}
+
+{{#name}}
+<form action="/add-message" method="post">
+    <input type="text" placeholder="Message Text" name="text" size="70">
+    <button type="submit">Submit</button>
+</form>
+
+Messages by {{.}}!
+<br/>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Text</th>
+        <th>Remove</th>
+        <th>Edit</th>
+    </tr>
+    {{#messages}}
+    <tr>
+        <td>{{id}}</td>
+        <td>{{text}}</td>
+        <td><form action="/delete-message" method="post"><input type="hidden" value="{{id}}" name="id"/><button type="submit">Delete</button></form></td>
+        <td><form action="/edit" method="get"><input type="hidden" value="{{id}}" name="id"/><button type="submit">Edit</button></form></td>
+    </tr>
+    {{/messages}}
+</table>
+
+
+{{/name}}
+
+</body>
+</html>
