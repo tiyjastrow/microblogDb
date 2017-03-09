@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+<form action="/add-message" method="post">
+    <input type="text" placeholder="Enter message" name="messageBody"><button type="submit">Submit</button>
+</form>
+
+<ol>
+    {{#messages}}
+    <li>{{text}}
+        <form action="/edit" method="post">
+            <input type="hidden" value="{{id}}" name="editId"><button type="submit">Edit</button>
+        </form>
+        <form action="/delete-message" method="post">
+            <input type="hidden" value="{{id}}" name="deleteId"><button type="submit">Delete</button>
+        </form>
+    </li>
+    {{/messages}}
+</ol>
+
+{{#editId}}
+    <form action="/edit-message" method="post">
+        <input type="text" placeholder="new message body" name="editedMessage"><button type="submit">Submit</button>
+    </form>
+{{/editId}}
+
+</body>
+</html>
