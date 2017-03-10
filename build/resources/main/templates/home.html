@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+{{^userName}}
+<form action="/login" method="post">
+    <input type="text" placeholder="Enter your name" name="userName"/>
+    <button type="submit">Login</button>
+</form>
+{{/userName}}
+
+{{#userName}}
+
+Hello {{userName}}!
+<br><br>
+<form action="/add-message" method="post">
+    <input type="text" placeholder="Enter your message" name="text"/>
+    <input type="hidden" name="id"/>
+    <button type="submit">CREATE NEW MESSAGE</button>
+</form>
+<br><br>
+<br>
+{{^messages}}
+Creating messages is fun...so do it.
+{{/messages}}
+<ol>
+{{#messages}}
+{{userName}}'s message:
+<li>{{text}}
+<form action="/delete-message" method="post">
+    <input type="hidden" value="{{id}}" name="id"/>
+    <button type="submit">Delete</button>
+</form>
+<form action="/edit-message" method="post">
+    <input type="hidden" value="{{id}}" name="id"/>
+    <input type="text" placeholder="Edit your message here..." name="editText"/>
+    <button type="submit">Edit</button>
+    <br><br>
+</form>
+
+{{/messages}}
+    </li>
+</ol>
+
+{{/userName}}
+
+</body>
+</html>
